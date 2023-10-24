@@ -79,6 +79,45 @@ body {
   cursor: pointer;
 }
 
+
+
+
+
+.singer-text {
+  position: absolute;
+  width: 248px;
+  height: 205px;
+  border-radius: 12px;
+  padding: 14px;
+  background-color: #313131;
+  overflow: hidden;
+  transform: scale(1);
+}
+
+._btn-text {
+  position: relative;
+ 
+}
+
+.genre-text-singer {
+ 
+}
+
+.singer-text-singer {
+ width: 113px;
+ height: 24px;
+  font-size: 14px;
+  color: #ffffff;
+  font-family: 'StratosSkyeng';
+  margin-top: 7px;
+}
+
+.singer-text-singer:hover {
+  color: #b672ff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 ._btn-icon:active svg {
   fill: transparent;
   stroke: #ffffff;
@@ -220,6 +259,8 @@ body {
   -ms-flex-align: center;
   align-items: center;
   margin-bottom: 51px;
+  gap: 10px;
+  border: 3px solid red;
 }
 
 .centerblock__content {
@@ -306,6 +347,7 @@ body {
   border: 1px solid #ffffff;
   border-radius: 60px;
   padding: 6px 20px;
+  position: relative;
 }
 
 .filter__button:not(:last-child) {
