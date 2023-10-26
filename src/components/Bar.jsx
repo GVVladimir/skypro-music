@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import SkeletonFooter from "./SkeletonBar";
 
 function Bar() {
+  const [isLoadingBar, setIsLoadengBar] = useState(true)
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoadengBar(false)
+    }, 5000);
+  })
   return (
     <div className="bar">
       <div className="bar__content">
@@ -42,16 +49,18 @@ function Bar() {
                     <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
                   </svg>
                 </div>
+                {isLoadingBar ? (<SkeletonFooter />) : (
                 <div className="track-play__author">
                   <a className="track-play__author-link" href="http://">
                     Ты та...
                   </a>
-                </div>
+                </div>)}
+                {isLoadingBar ? (<SkeletonFooter />) : (
                 <div className="track-play__album">
                   <a className="track-play__album-link" href="http://">
                     Баста
                   </a>
-                </div>
+                </div>)}
               </div>
 
               <div className="track-play__like-dis">

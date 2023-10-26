@@ -1,6 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import SkeletonImg from './SkeletonBurger';
 
  function Sidebar() {
+  const [isloadin, setIsLoadin] = useState(true)
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoadin(false)
+    }, 5000);
+  },[])
   return (
     <div className="main__sidebar sidebar">
     <div className="sidebar__personal">
@@ -11,8 +18,9 @@ import React from 'react'
         </svg>
       </div>
     </div>
-    <div className="sidebar__block">
+    <div className="sidebar__block">     
       <div className="sidebar__list">
+      {isloadin ? (< SkeletonImg />) : (
         <div className="sidebar__item">
           <a className="sidebar__link" href="/#">
             <img
@@ -21,7 +29,8 @@ import React from 'react'
               alt="day's playlist"
             />
           </a>
-        </div>
+        </div>)}
+        {isloadin ? (< SkeletonImg />) : (
         <div className="sidebar__item">
           <a className="sidebar__link" href="/#">
             <img
@@ -30,7 +39,8 @@ import React from 'react'
               alt="day's playlist"
             />
           </a>
-        </div>
+        </div>)}
+        {isloadin ? (< SkeletonImg />) : (
         <div className="sidebar__item">
           <a className="sidebar__link" href="/#">
             <img
@@ -39,7 +49,7 @@ import React from 'react'
               alt="day's playlist"
             />
           </a>
-        </div>
+        </div>)}
       </div>
     </div>
   </div>

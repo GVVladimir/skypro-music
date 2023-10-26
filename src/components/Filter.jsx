@@ -30,14 +30,15 @@ function Filter() {
   return (
     <div className="centerblock__filter filter">
       <div className="filter__title">Искать по:</div>
+
       <div>
         <div
-            className="filter__button button-author _btn-text"
-            onClick={getSingerFilter}
-          >исполнителю 
-          </div>
-          {filterSinger ? <Singer /> : false}   
-       
+          className="filter__button button-author _btn-text"
+          onClick={getSingerFilter}
+        >
+          исполнителю
+        </div>
+        {filterSinger ? <Singer /> : false}
       </div>
       <div>
         <div
@@ -45,8 +46,8 @@ function Filter() {
           onClick={getYearFilter}
         >
           году выпуска
-        </div>        
-          {filterYear ? <Year /> : false}        
+        </div>
+        {filterYear ? <Year /> : false}
       </div>
 
       <div
@@ -59,6 +60,5 @@ function Filter() {
     </div>
   );
 }
-
 
 export default Filter;

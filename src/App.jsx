@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "./components/Navigation";
 import Playlist from "./components/Playlist";
 import "./App.css";
 import Bar from "./components/Bar";
 import Sidebar from "./components/Sidebar";
+
+
 function App() {
   return (
+  
     <div className="wrapper">
       <div className="container">
         <main className="main">
-          <Nav />
+          <Nav />         
           <Playlist />
           <Sidebar />
         </main>
@@ -17,6 +20,7 @@ function App() {
         <footer className="footer"></footer>
       </div>
     </div>
+   
   );
 }
 
