@@ -31,8 +31,9 @@ function Filter() {
     <div className="centerblock__filter filter">
       <div className="filter__title">Искать по:</div>
 
-      <div >
-        <div tabindex="1"
+      <div>
+        <div
+          tabindex="0"
           className="filter__button button-author _btn-text"
           onClick={getSingerFilter}
         >
@@ -40,8 +41,9 @@ function Filter() {
         </div>
         {filterSinger ? <Singer /> : false}
       </div>
-      <div >
-        <div tabindex="1"
+      <div>
+        <div
+          tabindex="1"
           className="filter__button button-year _btn-text"
           onClick={getYearFilter}
         >
@@ -50,7 +52,8 @@ function Filter() {
         {filterYear ? <Year /> : false}
       </div>
 
-      <div tabindex="1"
+      <div
+        tabindex="2"
         className="filter__button button-genre _btn-text"
         onClick={getGenreFilter}
       >
