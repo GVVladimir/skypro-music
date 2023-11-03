@@ -26,6 +26,4 @@ export const SingerText = styled.ul`
   margin-top: 10px;
   overflow: hidden;
 
-  margin-left: 400px;
-  margin-top: 260px;
 `;

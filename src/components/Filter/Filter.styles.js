@@ -22,13 +22,26 @@ export const CenterblockFilterTitel = styled.div`
   margin-right: 15p;
 `;
 
-export const CenterblockFilterButton = styled.div`
+export const CenterblockFilterButton = styled.button`
   position: relative;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   border: 1px solid #ffffff;
+  color:#ffffff;
+  background-color:#000000;
   border-radius: 60px;
   padding: 6px 20px;
+  &:focus {
+    color: #b672ff;
+    cursor: pointer;
+    border: 1px solid #b672ff;
+  } 
+  &:hover {
+    color: #b672ff;
+    cursor: pointer;
+    border: 1px solid #b672ff;
+  } 
+  
 `;
