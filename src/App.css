@@ -74,9 +74,7 @@ body {
 }
 
 .singer-text {
-  border-color: #ad61ff;
-  color: #ad61ff;
-  cursor: pointer;
+
 }
 
 div:focus {
@@ -441,13 +439,13 @@ div:focus {
 .sidebar__list {
 
 } */
-
+/* 
 .sidebar__item {
  
 }
 
 .sidebar__item:not(:last-child) {
-  margin-bottom: 30px;
+
 }
 
 .sidebar__link {
@@ -456,7 +454,7 @@ div:focus {
 
 .sidebar__img {
  
-}
+} */
 
 /* .bar {
  

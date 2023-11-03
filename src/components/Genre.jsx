@@ -1,5 +1,9 @@
 import React from "react";
 
+import { styled } from "styled-components";
+
+
+
 function Genre() {
   return (
     <ul class="singer-text genre-text-singer scroll">
