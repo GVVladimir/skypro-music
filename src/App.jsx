@@ -1,7 +1,7 @@
 import Nav from "./components/NavMain/Navigation";
 
 import "./App.css";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./components/Sidebar/Sidebar";
 import Bar from "./components/Bar/Bar";
 import Playlist from "./components/PlayList/Playlist";
 

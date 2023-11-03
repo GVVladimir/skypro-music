@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Search from "../Search";
-import Filter from "../Filter";
+import Filter from "../Filter/Filter";
 import SkeletonList from "../Skeleton";
 import { useEffect } from "react";
 import * as S from "./PlayList.Styles";

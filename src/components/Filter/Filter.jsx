@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
-import Singer from "./Singer";
-import Year from "./Year";
-import Genre from "./Genre";
+import Singer from "../Singer";
+import Year from "../Year";
+import Genre from "../Genre";
+
+import * as S from "./Filter.styles";
 
 function Filter() {
   const [filterSinger, setSingerFilter] = useState(false);
@@ -28,39 +30,27 @@ function Filter() {
   };
 
   return (
-    <div className="centerblock__filter filter">
-      <div className="filter__title">Искать по:</div>
+    <S.CenterblockFilter>
+      <S.CenterblockFilterTitel>Искать по:</S.CenterblockFilterTitel>
 
       <div>
-        <div
-          tabindex="0"
-          className="filter__button button-author _btn-text"
-          onClick={getSingerFilter}
-        >
+        <S.CenterblockFilterButton tabindex="0" onClick={getSingerFilter}>
           исполнителю
-        </div>
+        </S.CenterblockFilterButton>
         {filterSinger ? <Singer /> : false}
       </div>
       <div>
-        <div
-          tabindex="1"
-          className="filter__button button-year _btn-text"
-          onClick={getYearFilter}
-        >
+        <S.CenterblockFilterButton tabindex="1" onClick={getYearFilter}>
           году выпуска
-        </div>
+        </S.CenterblockFilterButton>
         {filterYear ? <Year /> : false}
       </div>
 
-      <div
-        tabindex="2"
-        className="filter__button button-genre _btn-text"
-        onClick={getGenreFilter}
-      >
+      <S.CenterblockFilterButton tabindex="2" onClick={getGenreFilter}>
         жанру
-      </div>
+      </S.CenterblockFilterButton>
       {filterGenre ? <Genre /> : false}
-    </div>
+    </S.CenterblockFilter>
   );
 }
 
