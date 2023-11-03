@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import Singer from "../Singer";
 import Year from "../Year";
-import Genre from "../Genre";
+import Genre from "../Genre/Genre";
 
 import * as S from "./Filter.styles";
 

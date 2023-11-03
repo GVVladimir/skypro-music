@@ -74,7 +74,9 @@ body {
 }
 
 .singer-text {
-
+  border-color: #ad61ff;
+  color: #ad61ff;
+  cursor: pointer;
 }
 
 div:focus {
@@ -130,8 +132,7 @@ div:focus {
 }
 
 .genre-text-singer {
-  margin-left: 400px;
-  margin-top: 260px;
+  
 }
 
 .singer-text-singer {
