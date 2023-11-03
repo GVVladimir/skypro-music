@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SkeletonFooter from "../SkeletonBar";
+import SkeletonFooter from "../SkeletonBar/SkeletonBar";
 
 import * as S from "./bar.Styles";
 

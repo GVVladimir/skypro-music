@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import SkeletonImg from '../SkeletonBurger';
+import SkeletonImg from '../SkeletonBurger/SkeletonBurger';
 
 import * as S from './Sidebar.styles'
 

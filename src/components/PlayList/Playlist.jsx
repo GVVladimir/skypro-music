@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Search from "../Search";
+import Search from "../Search/Search";
 import Filter from "../Filter/Filter";
-import SkeletonList from "../Skeleton";
+import SkeletonList from "../Skeleton/Skeleton";
 import { useEffect } from "react";
 import * as S from "./PlayList.Styles";
 
