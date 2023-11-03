@@ -113,7 +113,7 @@ div:focus {
   scrollbar-width: thin;
 }
 
-.scroll::-webkit-scrollbar {
+/* .scroll::-webkit-scrollbar {
   width: 6px;
 }
 
@@ -125,14 +125,15 @@ div:focus {
 .scroll::-webkit-scrollbar-thumb {
   background-color: #757478;
   border-radius: 100px;
-}
+} */
 
 .skeleton {
   background-color: #757478;
 }
 
-.genre-text-singer {
-  
+/* .genre-text-singer {
+  margin-left: 400px;
+  margin-top: 260px;
 }
 
 .singer-text-singer {
@@ -148,7 +149,7 @@ div:focus {
   color: #b672ff;
   text-decoration: underline;
   cursor: pointer;
-}
+} */
 
 ._btn-icon:active svg {
   fill: transparent;
@@ -180,7 +181,7 @@ div:focus {
 /* .main__nav {
   
 } */
-
+/* 
 .main__centerblock {
   width: auto;
   -webkit-box-flex: 3;
@@ -192,7 +193,7 @@ div:focus {
 .main__sidebar {
   max-width: 418px;
   padding: 20px 90px 20px 78px;
-}
+} */
 
 /* .nav__logo {
  
@@ -331,10 +332,10 @@ div:focus {
 
 } */
 
-.filter_block_btn {
+/* .filter_block_btn {
   display: flex;
   gap: 10px;
-}
+} */
 /* 
 .content__title {
 
