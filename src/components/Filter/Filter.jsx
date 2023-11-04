@@ -34,13 +34,13 @@ function Filter() {
       <S.CenterblockFilterTitel>Искать по:</S.CenterblockFilterTitel>
 
       <div>
-        <S.CenterblockFilterButton tabindex="0" onClick={getSingerFilter}>
+        <S.CenterblockFilterButton  onClick={getSingerFilter}>
           исполнителю
         </S.CenterblockFilterButton>
         {filterSinger ? <Singer /> : false}
       </div>
       <div>
-        <S.CenterblockFilterButton tabindex="1" onClick={getYearFilter}>
+        <S.CenterblockFilterButton  onClick={getYearFilter}>
           году выпуска
         </S.CenterblockFilterButton>
         {filterYear ? <Year /> : false}
