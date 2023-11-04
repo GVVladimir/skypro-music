@@ -20,14 +20,16 @@ function Playlist() {
 
       <S.MainCenterblockContent>
         <S.MainCenterContentTitle>
-          <S.MainCenterContentTitleCol>Трек</S.MainCenterContentTitleCol>
-          <S.MainCenterContentTitleCol>ИСПОЛНИТЕЛЬ</S.MainCenterContentTitleCol>
-          <S.MainCenterContentTitleCol>АЛЬБОМ</S.MainCenterContentTitleCol>
-          <S.MainCenterContentTitleCol>
+          <S.MainCenterContentTitleCol01>Трек</S.MainCenterContentTitleCol01>
+          <S.MainCenterContentTitleCol02>
+            ИСПОЛНИТЕЛЬ
+          </S.MainCenterContentTitleCol02>
+          <S.MainCenterContentTitleCol03>АЛЬБОМ</S.MainCenterContentTitleCol03>
+          <S.MainCenterContentTitleCol04>
             <S.MainCenterContentTitleSvg alt="time">
               <use xlinkHref="img/icon/sprite.svg#icon-watch"></use>
             </S.MainCenterContentTitleSvg>
-          </S.MainCenterContentTitleCol>
+          </S.MainCenterContentTitleCol04>
         </S.MainCenterContentTitle>
         <S.MainCenterContentPlayList>
           <S.MainCenterContentPlayListItem>

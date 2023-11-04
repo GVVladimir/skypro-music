@@ -42,7 +42,7 @@ export const MainCenterContentTitle = styled.div`
   margin-bottom: 24px;
 `;
 
-export const MainCenterContentTitleCol = styled.div`
+export const MainCenterContentTitleCol01 = styled.div`
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -50,6 +50,41 @@ export const MainCenterContentTitleCol = styled.div`
   letter-spacing: 2px;
   color: #696969;
   text-transform: uppercase;
+  width: 447px;
+`;
+
+export const MainCenterContentTitleCol02 = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 2px;
+  color: #696969;
+  text-transform: uppercase;
+  width: 321px;
+`;
+
+export const MainCenterContentTitleCol03 = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 2px;
+  color: #696969;
+  text-transform: uppercase;
+  width: 245px;
+`;
+
+export const MainCenterContentTitleCol04 = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 2px;
+  color: #696969;
+  text-transform: uppercase;
+  width: 60px;
+  text-align: end;
 `;
 
 export const MainCenterContentTitleSvg = styled.svg`

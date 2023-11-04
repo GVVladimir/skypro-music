@@ -5,19 +5,21 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Bar from "./components/Bar/Bar";
 import Playlist from "./components/PlayList/Playlist";
 
+import * as S from "./App.Styles";
+
 function App() {
   return (
-    <div className="wrapper">
-      <div className="container">
-        <main className="main">
+    <S.Wrapper>
+      <S.Container>
+        <S.Main>
           <Nav />
           <Playlist />
           <Sidebar />
-        </main>
+        </S.Main>
         <Bar />
         <footer className="footer"></footer>
-      </div>
-    </div>
+      </S.Container>
+    </S.Wrapper>
   );
 }
 
