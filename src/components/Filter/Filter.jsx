@@ -45,14 +45,13 @@ function Filter() {
         </S.CenterblockFilterButton>
         {filterYear ? <Year /> : false}
       </div>
-<div>
-      <S.CenterblockFilterButton tabindex="2" onClick={getGenreFilter}>
-        жанру
-      </S.CenterblockFilterButton>
-      {filterGenre ? <Genre /> : false}
+      <div>
+        <S.CenterblockFilterButton onClick={getGenreFilter}>
+          жанру
+        </S.CenterblockFilterButton>
+        {filterGenre ? <Genre /> : false}
       </div>
     </S.CenterblockFilter>
-   
   );
 }
 
