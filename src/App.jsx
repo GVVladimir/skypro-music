@@ -6,6 +6,7 @@ import Bar from "./components/Bar/Bar";
 import Playlist from "./components/PlayList/Playlist";
 
 import * as S from "./App.Styles";
+import GlobalStyle from "./components/global";
 
 function App() {
   return (
@@ -17,7 +18,11 @@ function App() {
           <Sidebar />
         </S.Main>
         <Bar />
-        <footer className="footer"></footer>
+        
+        <footer className="footer">
+        <GlobalStyle />
+        </footer>
+       
       </S.Container>
     </S.Wrapper>
   );
