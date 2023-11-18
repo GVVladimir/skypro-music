@@ -6,7 +6,7 @@ const { useState } = React;
 
 // import * as S from "./components/NavMain/Navigation.style";
 
-function Nav() {
+function Nav({user, deletUserHendler}) {
   const [open, setOpen] = useState(false);
   const toggleVisibility = () => setOpen(!open);
 
@@ -15,13 +15,13 @@ function Nav() {
       <S.NaVLogo>
         <S.NavImage src="img/logo.png" alt="logo" />
       </S.NaVLogo>
-      <S.NavBurger onClick={toggleVisibility}>
+      <S.NavBurger  onClick={toggleVisibility}>
         {open ? true : false}
         <S.BurgerLine></S.BurgerLine>
         <S.BurgerLine></S.BurgerLine>
         <S.BurgerLine></S.BurgerLine>
       </S.NavBurger>
-      {open && <Burger />}
+      {open && <Burger user={user} deletUserHendler={deletUserHendler} />}
     </S.Nav>
   );
 }

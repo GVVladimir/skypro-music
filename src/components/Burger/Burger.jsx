@@ -1,24 +1,18 @@
 import React from "react";
-import * as S from './Burger.styles'
+import * as S from "./Burger.styles";
 
-function Burger() {
+function Burger({user,deletUserHendler}) {
   return (
     <S.NavMenu>
       <S.MenuList>
         <S.MenuItem>
-          <S.MenuLink href="/#" >
-            Главное
-          </S.MenuLink>
+          <S.MenuLink href="/#">Главное</S.MenuLink>
         </S.MenuItem>
         <S.MenuItem>
-          <S.MenuLink href="/#">
-            Мой плейлист
-          </S.MenuLink>
+          <S.MenuLink to="/favorits">Мой плейлист</S.MenuLink>
         </S.MenuItem>
         <S.MenuItem>
-          <S.MenuLink href="../signin.html" >
-            Войти
-          </S.MenuLink>
+          <S.MenuLink  onClick={user !== null && deletUserHendler} to="/login">Выйти</S.MenuLink>
         </S.MenuItem>
       </S.MenuList>
     </S.NavMenu>
