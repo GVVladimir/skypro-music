@@ -4,13 +4,8 @@ import SkeletonImg from "../SkeletonBurger/SkeletonBurger";
 
 import * as S from "./Sidebar.styles";
 
-function Sidebar() {
-  const [isloadin, setIsLoadin] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoadin(false);
-    }, 5000);
-  }, []);
+function Sidebar({isLoading}) {
+
   return (
     <S.MainSidebar>
       <S.SidebarPersonal>
@@ -23,7 +18,7 @@ function Sidebar() {
       </S.SidebarPersonal>
       <S.MainSidebarDlock>
         <S.MainSidebarList>
-          {isloadin ? (
+          {isLoading ? (
             <SkeletonImg />
           ) : (
             <S.SidebarItem>
@@ -32,7 +27,7 @@ function Sidebar() {
               </S.SidebarLink>
             </S.SidebarItem>
           )}
-          {isloadin ? (
+          {isLoading ? (
             <SkeletonImg />
           ) : (
             <S.SidebarItem>
@@ -41,7 +36,7 @@ function Sidebar() {
               </S.SidebarLink>
             </S.SidebarItem>
           )}
-          {isloadin ? (
+          {isLoading ? (
             <SkeletonImg />
           ) : (
             <S.SidebarItem>

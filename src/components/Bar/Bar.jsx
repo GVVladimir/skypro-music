@@ -1,16 +1,9 @@
-import React, { useEffect, useState } from "react";
+
 import SkeletonFooter from "../SkeletonBar/SkeletonBar";
 
 import * as S from "./bar.Styles";
 
-function Bar() {
-  const [isLoadingBar, setIsLoadengBar] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoadengBar(false);
-    }, 5000);
-  });
-
+function Bar({ isLoading, carentTrak }) {
   return (
     <S.Bar>
       <S.BarContent>
@@ -52,21 +45,21 @@ function Bar() {
                     <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
                   </S.BarNrackPlaySvg>
                 </S.BarNrackPlayImage>
-                {isLoadingBar ? (
+                {isLoading ? (
                   <SkeletonFooter />
                 ) : (
                   <S.BarTrackPlyAutor>
                     <S.BarTrackPlyAutorLink href="http://">
-                      Ты та...
+                      {carentTrak.name}
                     </S.BarTrackPlyAutorLink>
                   </S.BarTrackPlyAutor>
                 )}
-                {isLoadingBar ? (
+                {isLoading ? (
                   <SkeletonFooter />
                 ) : (
                   <S.BarTrackPlyApbum>
                     <S.BarTrackPlyAlbumLink href="http://">
-                      Баста
+                      {carentTrak.author}
                     </S.BarTrackPlyAlbumLink>
                   </S.BarTrackPlyApbum>
                 )}
