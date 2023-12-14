@@ -10,9 +10,10 @@ const Trak = ({
   author,
   album,
   duration_in_seconds,
+  track_file,
 }) => {
   return (
-    <S.MainCenterContentPlayListItem onClick={() => setCarentTrak({ name, author, album })}>
+    <S.MainCenterContentPlayListItem onClick={() => setCarentTrak({ name, author, album, track_file })}>
       <S.MainCenterContentPlayListTrack>
         <S.MainCenterContentPlayListTrackTitle>
           <S.MainCenterContentPlayListTrackTitleImg>
@@ -55,10 +56,10 @@ const Trak = ({
             <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
           </S.MainCenterContentPlayListTrackTimeSvg>
           <S.MainCenterContentPlayListTrackTimeText>
-            {/* {`${Math.floor(trak.duration_in_seconds / 60)}: ${Math.floor(
-              trak.duration_in_seconds % 60
-            )}`} */}
-            {duration_in_seconds}
+            {`${Math.floor(duration_in_seconds / 60)}: ${Math.floor(
+              duration_in_seconds % 60
+            )}`} 
+            {/* {duration_in_seconds} */}
           </S.MainCenterContentPlayListTrackTimeText>
         </div>
       </S.MainCenterContentPlayListTrack>
