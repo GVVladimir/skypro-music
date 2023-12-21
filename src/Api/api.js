@@ -7,3 +7,7 @@ export async function getTraks() {
   const data = await response.json();
   return data;
 }
+
+
+
+

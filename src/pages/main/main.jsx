@@ -5,7 +5,7 @@ import Playlist from "../../components/PlayList/Playlist";
 import * as S from "../../App.Styles";
 import GlobalStyle from "../../components/global";
 import Nav from "../../components/NavMain/Navigation";
-import { getTraks } from "../../api";
+import { getTraks } from "../../Api/api";
 
 export const Main = ({ user, deletUserHendler }) => {
   const [isLoading, setIsLoading] = useState(true);

@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext} from "react";
 import SkeletonImg from "../SkeletonBurger/SkeletonBurger";
 
-
 import * as S from "./Sidebar.styles";
+import { AuthContext } from "../../Stor/AutnContext";
 
-function Sidebar({isLoading}) {
+function Sidebar({ isLoading }) {
+  const { user, AuthLogaut } = useContext(AuthContext);
 
   return (
     <S.MainSidebar>
       <S.SidebarPersonal>
-        <S.MainSidebarName>Sergey.Ivanov</S.MainSidebarName>
+        <S.MainSidebarName>{user.username}</S.MainSidebarName>
         <S.MainSidebarIcon>
-          <svg alt="logout">
+          <svg alt="logout" onClick={AuthLogaut}>
             <use xlinkHref="img/icon/sprite.svg#logout"></use>
           </svg>
         </S.MainSidebarIcon>
