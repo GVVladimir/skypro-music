@@ -17,19 +17,31 @@ export const Login = ({ isLoginMode = false }) => {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const navigate = useNavigate();
-  const handleLogin = async ({ email, password }) => {
-   const userData = await loginUser({email, password})
-   AuthLogin(userData);
-    navigate("/");
-    setError("Неизвестная ошибка входа");
-  };
+ 
 
   const handleRegister = async () => {
     const user = await registrUser({ email, password, username: email });
+    if (email || password  === ""){
+      return alert ("Укажите почту/пароль")
+    }  
     AuthLogin(user);
     navigate("/");
     setError("Неизвестная ошибка регистрации");
+  
   };
+
+  const handleLogin = async ({ email, password }) => {
+    const userData = await loginUser({email, password})
+    if(!email || !password ){
+     return alert("Укажите почту/пароль")
+    } else 
+    if (!){
+      return alert ("Пользователь с таким email или паролем не найден")
+    }
+    AuthLogin(userData);
+     navigate("/");
+     setError("Неизвестная ошибка входа");
+   };
 
   // Сбрасываем ошибку если пользователь меняет данные на форме или меняется режим формы
   useEffect(() => {
