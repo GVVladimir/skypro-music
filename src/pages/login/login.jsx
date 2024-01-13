@@ -21,9 +21,9 @@ export const Login = ({ isLoginMode = false }) => {
 
   const handleRegister = async () => {
     const user = await registrUser({ email, password, username: email });
-    if (email || password  === ""){
-      return alert ("Укажите почту/пароль")
-    }  
+    if(email === '' || password === ''){
+      return alert("Укажите почту/пароль")
+    }
     AuthLogin(user);
     navigate("/");
     setError("Неизвестная ошибка регистрации");
@@ -32,10 +32,10 @@ export const Login = ({ isLoginMode = false }) => {
 
   const handleLogin = async ({ email, password }) => {
     const userData = await loginUser({email, password})
-    if(!email || !password ){
+    if(email === '' || password === ''){
      return alert("Укажите почту/пароль")
     } else 
-    if (!){
+    if ((email.value) === true){
       return alert ("Пользователь с таким email или паролем не найден")
     }
     AuthLogin(userData);
