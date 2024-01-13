@@ -23,7 +23,7 @@ export const Login = ({ isLoginMode = false }) => {
     const user = await registrUser({ email, password, username: email });
     if(email === '' || password === ''){
       return alert("Укажите почту/пароль")
-    }
+    } 
     AuthLogin(user);
     navigate("/");
     setError("Неизвестная ошибка регистрации");
@@ -34,11 +34,12 @@ export const Login = ({ isLoginMode = false }) => {
     const userData = await loginUser({email, password})
     if(email === '' || password === ''){
      return alert("Укажите почту/пароль")
-    } else 
-    if ((email.value) === true){
+    } 
+    
+    AuthLogin(userData);
+    if (email !== user.username){
       return alert ("Пользователь с таким email или паролем не найден")
     }
-    AuthLogin(userData);
      navigate("/");
      setError("Неизвестная ошибка входа");
    };
