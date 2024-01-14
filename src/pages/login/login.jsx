@@ -17,32 +17,49 @@ export const Login = ({ isLoginMode = false }) => {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const navigate = useNavigate();
- 
 
   const handleRegister = async () => {
-    const user = await registrUser({ email, password, username: email });
-    if(email === '' || password === ''){
-      return alert("Укажите почту/пароль")
-    } 
-    AuthLogin(user);
-    navigate("/");
-    setError("Неизвестная ошибка регистрации");
-  
+    try {
+      // if (email === "" || password === "") {
+      //   setError("Заполните почту или пароль");
+      //   return;
+      // }
+      // if (email === "") {
+      //   setError("Заполните почту");
+      //   return;
+      // }
+      // if (password === "") {
+      //   setError("Заполните пароль");
+      //   return;
+      // }
+      // if (password !== repeatPassword) {
+      //   setError("Пароли не совпадают");
+      //   return;
+      // }
+
+      const user = await registrUser({ email, password, username: email });
+
+      AuthLogin(user);
+      navigate("/");
+      setError("Неизвестная ошибка регистрации");
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   const handleLogin = async ({ email, password }) => {
-    const userData = await loginUser({email, password})
-    if(email === '' || password === ''){
-     return alert("Укажите почту/пароль")
-    } 
-    
-    AuthLogin(userData);
-    if (email !== user.username){
-      return alert ("Пользователь с таким email или паролем не найден")
+    try {
+      const userData = await loginUser({ email, password });
+      AuthLogin(userData);
+      if (!email) {
+        return alert("Пользователь с таким email или паролем не найден");
+      }
+      navigate("/");
+      setError("Неизвестная ошибка входа");
+    } catch (error) {
+      setError(error.message);
     }
-     navigate("/");
-     setError("Неизвестная ошибка входа");
-   };
+  };
 
   // Сбрасываем ошибку если пользователь меняет данные на форме или меняется режим формы
   useEffect(() => {
