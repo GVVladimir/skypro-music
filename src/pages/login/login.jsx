@@ -48,6 +48,19 @@ export const Login = ({ isLoginMode = false }) => {
 
   const handleLogin = async ({ email, password }) => {
     try {
+      if (email === "" || password === "") {
+        setError("Заполните почту или пароль");
+        return;
+      }
+      if (email === "") {
+        setError("Заполните почту");
+        return;
+      }
+      
+      if (password === "") {
+        setError("Заполните пароль");
+        return;
+      }
       const userData = await loginUser({ email, password });
 
       AuthLogin(userData);
