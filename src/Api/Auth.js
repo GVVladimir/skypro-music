@@ -16,13 +16,13 @@ export const registrUser = async ({ email, password, username }) => {
   const responsRegistUser = await response.json();
   if (response.status === 400) {
     const userEmailError = responsRegistUser.email
-      ? `Email:${responsRegistUser.email}`
+      ? `Почта:${responsRegistUser.email}`
       : "";
     const userPasswordError = responsRegistUser.password
-      ? `Password:${responsRegistUser.password}`
+      ? `Поле пароль:${responsRegistUser.password}`
       : "";
     const userNameError = responsRegistUser.username
-      ? `Name:${responsRegistUser.username}`
+      ? `Повтор пароля:${responsRegistUser.username}`
       : "";
 
     throw new Error(`${userEmailError}${userPasswordError}${userNameError}`);
@@ -48,10 +48,10 @@ export const loginUser = async ({ email, password }) => {
   const responsLoginUser = await response.json();
   if (response.status === 400) {
     const userEmailError = responsLoginUser.email
-      ? `Email:${responsLoginUser.email}`
+      ? `Почта:${responsLoginUser.email}`
       : "";
     const userPasswordError = responsLoginUser.password
-      ? `Password:${responsLoginUser.password}`
+      ? `Поле пароль:${responsLoginUser.password}`
       : "";
     throw new Error(`${userEmailError}${userPasswordError}`);
   }

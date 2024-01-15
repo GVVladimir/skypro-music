@@ -20,28 +20,27 @@ export const Login = ({ isLoginMode = false }) => {
 
   const handleRegister = async () => {
     try {
-      // if (email === "" || password === "") {
-      //   setError("Заполните почту или пароль");
-      //   return;
-      // }
-      // if (email === "") {
-      //   setError("Заполните почту");
-      //   return;
-      // }
-      // if (password === "") {
-      //   setError("Заполните пароль");
-      //   return;
-      // }
-      // if (password !== repeatPassword) {
-      //   setError("Пароли не совпадают");
-      //   return;
-      // }
+      if (email === "" || password === "") {
+        setError("Заполните почту или пароль");
+        return;
+      }
+      if (email === "") {
+        setError("Заполните почту");
+        return;
+      }
+      if (password === "") {
+        setError("Заполните пароль");
+        return;
+      }
+      if (password !== repeatPassword) {
+        setError("Пароли не совпадают");
+        return;
+      }
 
       const user = await registrUser({ email, password, username: email });
 
       AuthLogin(user);
       navigate("/");
-      setError("Неизвестная ошибка регистрации");
     } catch (error) {
       setError(error.message);
     }
@@ -50,12 +49,9 @@ export const Login = ({ isLoginMode = false }) => {
   const handleLogin = async ({ email, password }) => {
     try {
       const userData = await loginUser({ email, password });
+
       AuthLogin(userData);
-      if (!email) {
-        return alert("Пользователь с таким email или паролем не найден");
-      }
       navigate("/");
-      setError("Неизвестная ошибка входа");
     } catch (error) {
       setError(error.message);
     }
