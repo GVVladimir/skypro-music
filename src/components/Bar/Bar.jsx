@@ -3,8 +3,9 @@ import SkeletonFooter from "../SkeletonBar/SkeletonBar";
 
 import * as S from "./bar.Styles";
 import moment from "moment/moment";
+import { useSelector } from "react-redux";
 
-function Bar({ isLoading, carentTrak }) {
+function Bar({ isLoading }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoop, setIsLoop] = useState(false);
   const [duration, setDuration] = useState(0);
@@ -13,6 +14,8 @@ function Bar({ isLoading, carentTrak }) {
   const audioRef = useRef(null);
   const formatDuration = moment.utc(duration * 1000).format("mm:ss");
   const formatCurrantTime = moment.utc(currentTime * 1000).format("mm:ss");
+
+  const carentTrak = useSelector((state) => state.music.carentTrak)
 
   const onChenge = (event) => {
     const newCurrentTime = event.target.value;

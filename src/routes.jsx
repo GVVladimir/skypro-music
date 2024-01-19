@@ -3,7 +3,7 @@ import { Favorits } from "./pages/favorits/Favorits";
 import { Main } from "./pages/main/main";
 import { Category } from "./pages/category/category";
 import { NotFaund } from "./pages/notFaund/notFaund";
-import { useState } from "react";
+// import { useState } from "react";
 import { ProtectedRoute } from "./components/protector-rout/protector";
 import { Login } from "./pages/login/login.jsx";
 import { AuthProvider } from "./Stor/AutnContext";

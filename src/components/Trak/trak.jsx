@@ -1,19 +1,22 @@
-
-
 import SkeletonList from "../Skeleton/Skeleton";
 import * as S from "../PlayList/PlayList.Styles";
+import { getTrack } from "../../Store/slice";
+import { useDispatch } from "react-redux";
+
 
 const Trak = ({
   isLoading,
-  setCarentTrak,
   name,
   author,
   album,
   duration_in_seconds,
   track_file,
 }) => {
+  const dispatch = useDispatch()
   return (
-    <S.MainCenterContentPlayListItem onClick={() => setCarentTrak({ name, author, album, track_file })}>
+    <S.MainCenterContentPlayListItem
+      onClick={() => dispatch(getTrack({ name, author, album, track_file }))}
+    >
       <S.MainCenterContentPlayListTrack>
         <S.MainCenterContentPlayListTrackTitle>
           <S.MainCenterContentPlayListTrackTitleImg>
@@ -58,7 +61,7 @@ const Trak = ({
           <S.MainCenterContentPlayListTrackTimeText>
             {`${Math.floor(duration_in_seconds / 60)}: ${Math.floor(
               duration_in_seconds % 60
-            )}`} 
+            )}`}
             {/* {duration_in_seconds} */}
           </S.MainCenterContentPlayListTrackTimeText>
         </div>

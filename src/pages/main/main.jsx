@@ -6,11 +6,12 @@ import * as S from "../../App.Styles";
 import GlobalStyle from "../../components/global";
 import Nav from "../../components/NavMain/Navigation";
 import { getTraks } from "../../Api/api";
+import { useSelector } from "react-redux";
 
 export const Main = ({ user, deletUserHendler }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [traks, setTraks] = useState([]);
-  const [carentTrak, setCarentTrak] = useState(null);
+  // const [carentTrak, setCarentTrak] = useState(null);
 
   useEffect(() => {
     getTraks().then((traks) => {
@@ -19,17 +20,17 @@ export const Main = ({ user, deletUserHendler }) => {
     });
   }, []);
 
- 
+  const carentTrak = useSelector((state) => state.music.carentTrak)
   return (
     <S.Wrapper>
       <S.Container>
         <S.Main>
           <Nav user={user} deletUserHendler={deletUserHendler} />
-          <Playlist traks={traks} isLoading={isLoading} setCarentTrak={setCarentTrak}/>
+          <Playlist traks={traks} isLoading={isLoading} />
           <Sidebar isLoading={isLoading} />
         </S.Main>
         {
-          carentTrak && <Bar isLoading={isLoading} carentTrak={carentTrak} />
+          carentTrak ? <Bar /> : null
         }
        
 

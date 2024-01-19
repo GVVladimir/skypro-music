@@ -5,7 +5,7 @@ import Trak from "../Trak/trak"
 
 import * as S from "./PlayList.Styles";
 
-function Playlist({ traks, isLoading, setCarentTrak }) {
+function Playlist({ traks, isLoading }) {
   return (
     <S.MainCenterblock>
       <Search />
@@ -29,7 +29,6 @@ function Playlist({ traks, isLoading, setCarentTrak }) {
           {traks.map((trak) => {
             return (<Trak {...trak}
             isLoading={isLoading}
-            setCarentTrak={setCarentTrak}
             key={trak.id}/> );
           })}
         </S.MainCenterContentPlayList>
