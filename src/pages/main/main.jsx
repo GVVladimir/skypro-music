@@ -20,7 +20,7 @@ export const Main = ({ user, deletUserHendler }) => {
     });
   }, []);
 
-  const carentTrak = useSelector((state) => state.music.carentTrak)
+  const carentTrak = useSelector((state) => state.music.carentTrak);
   return (
     <S.Wrapper>
       <S.Container>
@@ -29,10 +29,7 @@ export const Main = ({ user, deletUserHendler }) => {
           <Playlist traks={traks} isLoading={isLoading} />
           <Sidebar isLoading={isLoading} />
         </S.Main>
-        {
-          carentTrak ? <Bar /> : null
-        }
-       
+        {carentTrak ? <Bar /> : null}
 
         <footer className="footer">
           <GlobalStyle />

@@ -3,8 +3,7 @@ import * as S from "../PlayList/PlayList.Styles";
 import { getTrack } from "../../Store/slice";
 import { useDispatch } from "react-redux";
 
-
-const Trak = ({
+export const Track = ({
   isLoading,
   name,
   author,
@@ -12,7 +11,7 @@ const Trak = ({
   duration_in_seconds,
   track_file,
 }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   return (
     <S.MainCenterContentPlayListItem
       onClick={() => dispatch(getTrack({ name, author, album, track_file }))}
@@ -69,4 +68,4 @@ const Trak = ({
     </S.MainCenterContentPlayListItem>
   );
 };
-export default Trak;
+export default Track;

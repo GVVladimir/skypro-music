@@ -15,7 +15,7 @@ function Bar({ isLoading }) {
   const formatDuration = moment.utc(duration * 1000).format("mm:ss");
   const formatCurrantTime = moment.utc(currentTime * 1000).format("mm:ss");
 
-  const carentTrak = useSelector((state) => state.music.carentTrak)
+  const currentTrack = useSelector((state) => state.music.currentTrack)
 
   const onChenge = (event) => {
     const newCurrentTime = event.target.value;
@@ -59,12 +59,12 @@ function Bar({ isLoading }) {
   };
 
   useEffect(() => {
-    if (carentTrak) {
+    if (currentTrack) {
       handleStart();
     } else {
       handleStop();
     }
-  }, [carentTrak]);
+  }, [currentTrack]);
 
   const handleStart = () => {
     audioRef.current.play();
@@ -91,7 +91,7 @@ function Bar({ isLoading }) {
   const toggleLoop = isLoop ? handleStopLoop : handleStartLoop;
   return (
     <>
-      <audio loop={false} ref={audioRef} src={carentTrak.track_file}></audio>
+      <audio loop={false} ref={audioRef} src={currentTrack.track_file}></audio>
 
       <S.Bar>
         <S.BarContent>
@@ -105,7 +105,7 @@ function Bar({ isLoading }) {
             max={duration}
             onChange={onChenge}
             step="0.01"
-            duration_in_seconds
+         
           ></S.StyledProgressInput>
           <S.BarProgress></S.BarProgress>
           <S.BarPlayerBlock>
@@ -165,7 +165,7 @@ function Bar({ isLoading }) {
                   ) : (
                     <S.BarTrackPlyAutor>
                       <S.BarTrackPlyAutorLink href="http://">
-                        {carentTrak.name}
+                        {currentTrack.name}
                       </S.BarTrackPlyAutorLink>
                     </S.BarTrackPlyAutor>
                   )}
@@ -174,7 +174,7 @@ function Bar({ isLoading }) {
                   ) : (
                     <S.BarTrackPlyApbum>
                       <S.BarTrackPlyAlbumLink href="http://">
-                        {carentTrak.author}
+                        {currentTrack.author}
                       </S.BarTrackPlyAlbumLink>
                     </S.BarTrackPlyApbum>
                   )}
