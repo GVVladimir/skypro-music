@@ -1,7 +1,6 @@
-
 import Search from "../Search/Search";
 import Filter from "../Filter/Filter";
-import Track from "../Track/track"
+import Track from "../Track/track";
 
 import * as S from "./PlayList.Styles";
 
@@ -26,11 +25,10 @@ function Playlist({ tracks, isLoading }) {
           </S.MainCenterContentTitleCol04>
         </S.MainCenterContentTitle>
         <S.MainCenterContentPlayList>
-          {tracks.map((track) => {
-            return (<Track {...track}
-            isLoading={isLoading}
-            key={track.id}/> );
-          })}
+          {tracks.length > 0 &&
+            tracks.map((track) => {
+              return <Track {...track} isLoading={isLoading} key={track.id} />;
+            })}
         </S.MainCenterContentPlayList>
       </S.MainCenterblockContent>
     </S.MainCenterblock>
