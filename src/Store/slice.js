@@ -15,13 +15,13 @@ export const sliceMusicTrack = createSlice({
       state.trackList = action.payload.getTracks;
      },
 
-     setNextTrack:(state, action) => {
-        let currentIndex = 0
-        for (let i = 0; i < state.trackList.length; i++ ){
+    //  setNextTrack:(state, action) => {
+    //     let currentIndex = 0
+    //     for (let i = 0; i < state.trackList.length; i++ ){
 
-        }
-        state.currentTrack = state.trackList[currentIndex + 1]
-     }
+    //     }
+    //     state.currentTrack = state.trackList[currentIndex + 1]
+    //  }
 
   },
 });

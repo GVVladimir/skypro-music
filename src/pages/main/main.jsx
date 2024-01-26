@@ -5,17 +5,17 @@ import Playlist from "../../components/PlayList/Playlist";
 import * as S from "../../App.Styles";
 import GlobalStyle from "../../components/global";
 import Nav from "../../components/NavMain/Navigation";
-import { getTraks } from "../../Api/api";
+import { getTracks } from "../../Api/api";
 import { useSelector } from "react-redux";
 
 export const Main = ({ user, deletUserHendler }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [traks, setTraks] = useState([]);
+  const [tracks, setTracks] = useState([]);
   // const [carentTrak, setCarentTrak] = useState(null);
 
   useEffect(() => {
-    getTraks().then((traks) => {
-      setTraks(traks);
+    getTracks().then((tracks) => {
+      setTracks(tracks);
       setIsLoading(false);
     });
   }, []);
@@ -26,7 +26,7 @@ export const Main = ({ user, deletUserHendler }) => {
       <S.Container>
         <S.Main>
           <Nav user={user} deletUserHendler={deletUserHendler} />
-          <Playlist traks={traks} isLoading={isLoading} />
+          <Playlist tracks={tracks} isLoading={isLoading} />
           <Sidebar isLoading={isLoading} />
         </S.Main>
         {carentTrak ? <Bar /> : null}
