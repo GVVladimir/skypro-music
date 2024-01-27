@@ -13,7 +13,7 @@ export const Main = ({ user, deletUserHendler }) => {
   const [tracks, setTracks] = useState([]);
   // const [carentTrak, setCarentTrak] = useState(null);
 
-  useEffect(() => {
+  useEffect(() => { 
     getTracks().then((tracks) => {
       setTracks(tracks);
       setIsLoading(false);

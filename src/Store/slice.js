@@ -8,12 +8,12 @@ export const sliceMusicTrack = createSlice({
   name: "music",
   initialState,
   reducers: {
-    setTrackList: (state, action) => {
-        console.log(state)
-        console.log(action)
+    getTrack: (state, action) => {
+      console.log(state);
+      console.log(action);
     //   state.carentTrak = action.payload;
       state.trackList = action.payload.getTracks;
-     },
+    },
 
     //  setNextTrack:(state, action) => {
     //     let currentIndex = 0
@@ -22,7 +22,6 @@ export const sliceMusicTrack = createSlice({
     //     }
     //     state.currentTrack = state.trackList[currentIndex + 1]
     //  }
-
   },
 });
 export const { getTrack } = sliceMusicTrack.actions;
