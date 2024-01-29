@@ -3,9 +3,10 @@ import SkeletonFooter from "../SkeletonBar/SkeletonBar";
 
 import * as S from "./bar.Styles";
 import moment from "moment/moment";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setNextTrack } from "../../Store/slice";
 
-function Bar({ isLoading }) {
+export function Bar({ isLoading }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoop, setIsLoop] = useState(false);
   const [duration, setDuration] = useState(0);
@@ -15,8 +16,8 @@ function Bar({ isLoading }) {
   const formatDuration = moment.utc(duration * 1000).format("mm:ss");
   const formatCurrantTime = moment.utc(currentTime * 1000).format("mm:ss");
 
-  const currentTrack = useSelector((state) => state.music.currentTrack)
-
+  const currentTrack = useSelector((state) => state.music.currentTrack);
+  const dispatch = useDispatch();
   const onChenge = (event) => {
     const newCurrentTime = event.target.value;
     audioRef.current.currentTime = newCurrentTime;
@@ -47,9 +48,9 @@ function Bar({ isLoading }) {
     setVolume(newVolume);
   };
 
-  const handlNextTrack = () => {
-    alert("Пока не работает");
-  };
+  // const handlNextTrack = () => {
+  //   dispatch(setNextTrack());
+  // };
   const handlRevTrack = () => {
     alert("Пока не работает");
   };
@@ -105,7 +106,6 @@ function Bar({ isLoading }) {
             max={duration}
             onChange={onChenge}
             step="0.01"
-         
           ></S.StyledProgressInput>
           <S.BarProgress></S.BarProgress>
           <S.BarPlayerBlock>
@@ -128,7 +128,10 @@ function Bar({ isLoading }) {
                   )}
                 </S.BarPlayerBtn>
                 <S.BarPlayerNext>
-                  <S.BarPlayerNextSvg onClick={handlNextTrack} alt="next">
+                  <S.BarPlayerNextSvg
+                    onClick={() => dispatch(setNextTrack())}
+                    alt="next"
+                  >
                     <use xlinkHref="img/icon/sprite.svg#icon-next"></use>
                   </S.BarPlayerNextSvg>
                 </S.BarPlayerNext>
