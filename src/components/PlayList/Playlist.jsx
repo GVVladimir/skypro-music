@@ -25,7 +25,8 @@ function Playlist({ tracks, isLoading }) {
           </S.MainCenterContentTitleCol04>
         </S.MainCenterContentTitle>
         <S.MainCenterContentPlayList>
-          {tracks.length > 0 &&
+          {
+          tracks.length > 0 &&
             tracks.map((track) => {
               return <Track {...track} isLoading={isLoading} key={track.id} />;
             })}

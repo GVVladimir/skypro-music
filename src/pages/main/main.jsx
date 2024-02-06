@@ -17,10 +17,11 @@ export const Main = ({ user, deletUserHendler }) => {
     getTracks().then((tracks) => {
       setTracks(tracks);
       setIsLoading(false);
-    });
+    },3000);
   }, []);
 
-  const currentTrackNext = useSelector((state) => state.music.currentTrack);
+  const currentTrack = useSelector((state) => state.music.currentTrack);
+  
   return (
     <S.Wrapper>
       <S.Container>
@@ -29,7 +30,7 @@ export const Main = ({ user, deletUserHendler }) => {
           <Playlist tracks={tracks} isLoading={isLoading} />
           <Sidebar isLoading={isLoading} />
         </S.Main>
-        {currentTrackNext ? <Bar /> : null}
+        {currentTrack ? <Bar /> : null}
 
         <footer className="footer">
           <GlobalStyle />

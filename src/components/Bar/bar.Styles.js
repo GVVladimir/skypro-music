@@ -246,6 +246,15 @@ export const BarPlayerShuffleSvg = styled.svg`
   fill: transparent;
   stroke: #696969;
 `;
+
+export const BarPlayerShuffleSvgActive = styled.svg`
+  width: 19px;
+  height: 12px;
+  fill: transparent;
+  stroke: #ffffff;
+  cursor: pointer;
+`;
+
 export const BarTrackPlyAutor = styled.div`
   -ms-grid-row: 1;
   -ms-grid-column: 2;

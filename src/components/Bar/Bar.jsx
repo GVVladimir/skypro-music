@@ -1,13 +1,31 @@
 import { useEffect, useRef, useState } from "react";
+import React from "react";
 import SkeletonFooter from "../SkeletonBar/SkeletonBar";
 
 import * as S from "./bar.Styles";
 import moment from "moment/moment";
 import { useDispatch, useSelector } from "react-redux";
-import { setNextTrack } from "../../Store/slice";
+import {
+  getTrack,
+  setAllTrack,
+  setPlayTrack,
+  setPauseTrack,
+  setNextTrack,
+  setPrevTrack,
+  setTracksListShuffled,
+} from "../../Store/slice";
 
-export function Bar({ isLoading }) {
-  const [isPlaying, setIsPlaying] = useState(false);
+function Bar() {
+  const currentTrack = useSelector((state) => state.music.currentTrack);
+  const $isPlaying = useSelector((state) => state.music.$isPlaying);
+  const isShuffledTrackList = useSelector(
+    (state) => state.music.isShuffledTrackList
+  );
+
+  const dispatch = useDispatch();
+  // const { theme } = useThemeContext();
+
+  // const [isPlaying, setIsPlaying] = useState(false);
   const [isLoop, setIsLoop] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
@@ -16,8 +34,8 @@ export function Bar({ isLoading }) {
   const formatDuration = moment.utc(duration * 1000).format("mm:ss");
   const formatCurrantTime = moment.utc(currentTime * 1000).format("mm:ss");
 
-  const currentTrack = useSelector((state) => state.music.currentTrack);
-  const dispatch = useDispatch();
+  // const currentTrack = useSelector((state) => state.music.currentTrack);
+
   const onChenge = (event) => {
     const newCurrentTime = event.target.value;
     audioRef.current.currentTime = newCurrentTime;
@@ -40,7 +58,7 @@ export function Bar({ isLoading }) {
     return () => {
       audio.removeEventListener("timeupdate", timeUpdate);
     };
-  }, []);
+  }, [dispatch]);
 
   const volumeUpdate = (event) => {
     const newVolume = event.target.value;
@@ -48,9 +66,9 @@ export function Bar({ isLoading }) {
     setVolume(newVolume);
   };
 
-  // const handlNextTrack = () => {
-  //   dispatch(setNextTrack());
-  // };
+  const handlNextTrack = () => {
+    dispatch(setNextTrack());
+  };
   const handlRevTrack = () => {
     alert("Пока не работает");
   };
@@ -69,15 +87,13 @@ export function Bar({ isLoading }) {
 
   const handleStart = () => {
     audioRef.current.play();
-    setIsPlaying(true);
+    // setIsPlaying(true);
   };
 
   const handleStop = () => {
     audioRef.current.pause();
-    setIsPlaying(false);
+    // setIsPlaying(false);
   };
-
-  const togglePlay = isPlaying ? handleStop : handleStart;
 
   const handleStartLoop = () => {
     audioRef.current.loop = true;
@@ -90,6 +106,17 @@ export function Bar({ isLoading }) {
   };
 
   const toggleLoop = isLoop ? handleStopLoop : handleStartLoop;
+
+  const togglePlay = $isPlaying ? handleStop : handleStart;
+
+  useEffect(() => {
+    if (currentTrack) {
+      handleStart();
+    } else {
+      handleStop();
+    }
+  }, [currentTrack]);
+
   return (
     <>
       <audio loop={false} ref={audioRef} src={currentTrack.track_file}></audio>
@@ -116,22 +143,19 @@ export function Bar({ isLoading }) {
                     <use xlinkHref="img/icon/sprite.svg#icon-prev"></use>
                   </S.BarPlayerPrevSvg>
                 </S.BarPlayerPrev>
-                <S.BarPlayerBtn>
-                  {isPlaying ? (
+                <S.BarPlayerBtn onClick={togglePlay}>
+                  {$isPlaying ? (
                     <S.BarPlayerBtnSvg alt="pause" onClick={togglePlay}>
                       <use xlinkHref="img/icon/sprite.svg#icon-pause"></use>
                     </S.BarPlayerBtnSvg>
                   ) : (
-                    <S.BarPlayerBtnSvg alt="play" onClick={togglePlay}>
+                    <S.BarPlayerBtnSvg alt="play">
                       <use xlinkHref="img/icon/sprite.svg#icon-play"></use>
                     </S.BarPlayerBtnSvg>
                   )}
                 </S.BarPlayerBtn>
-                <S.BarPlayerNext>
-                  <S.BarPlayerNextSvg
-                    onClick={() => dispatch(setNextTrack())}
-                    alt="next"
-                  >
+                <S.BarPlayerNext onClick={handlNextTrack}>
+                  <S.BarPlayerNextSvg alt="next">
                     <use xlinkHref="img/icon/sprite.svg#icon-next"></use>
                   </S.BarPlayerNextSvg>
                 </S.BarPlayerNext>
@@ -146,13 +170,16 @@ export function Bar({ isLoading }) {
                     </S.BarPlayerRepeatSvg>
                   )}
                 </S.BarPlayerRepeat>
-                <S.BarPlayerShuffle>
-                  <S.BarPlayerShuffleSvg
-                    onClick={handlShuffleTrack}
-                    alt="shuffle"
-                  >
-                    <use xlinkHref="img/icon/sprite.svg#icon-shuffle"></use>
-                  </S.BarPlayerShuffleSvg>
+                <S.BarPlayerShuffle onClick={handlShuffleTrack}>
+                  {isShuffledTrackList ? (
+                    <S.BarPlayerShuffleSvgActive alt="shuffle">
+                      <use xlinkHref="img/icon/sprite.svg#icon-shuffle"></use>
+                    </S.BarPlayerShuffleSvgActive>
+                  ) : (
+                    <S.BarPlayerShuffleSvg alt="shuffle">
+                      <use xlinkHref="img/icon/sprite.svg#icon-shuffle"></use>
+                    </S.BarPlayerShuffleSvg>
+                  )}
                 </S.BarPlayerShuffle>
               </S.BarPlayerControls>
 
@@ -163,24 +190,20 @@ export function Bar({ isLoading }) {
                       <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
                     </S.BarNrackPlaySvg>
                   </S.BarNrackPlayImage>
-                  {isLoading ? (
-                    <SkeletonFooter />
-                  ) : (
+                 
                     <S.BarTrackPlyAutor>
                       <S.BarTrackPlyAutorLink href="http://">
                         {currentTrack.name}
                       </S.BarTrackPlyAutorLink>
                     </S.BarTrackPlyAutor>
-                  )}
-                  {isLoading ? (
-                    <SkeletonFooter />
-                  ) : (
+                 
+                
                     <S.BarTrackPlyApbum>
                       <S.BarTrackPlyAlbumLink href="http://">
                         {currentTrack.author}
                       </S.BarTrackPlyAlbumLink>
                     </S.BarTrackPlyApbum>
-                  )}
+                 
                 </S.BarNrackPlayContain>
 
                 <S.BarTrackPlyLikeDis>
