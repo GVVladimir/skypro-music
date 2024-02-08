@@ -4,7 +4,7 @@ import Track from "../Track/track";
 
 import * as S from "./PlayList.Styles";
 
-function Playlist({ tracks, isLoading }) {
+function Playlist({ tracks }) {
   return (
     <S.MainCenterblock>
       <Search />
@@ -25,10 +25,9 @@ function Playlist({ tracks, isLoading }) {
           </S.MainCenterContentTitleCol04>
         </S.MainCenterContentTitle>
         <S.MainCenterContentPlayList>
-          {
-          tracks.length > 0 &&
+          {tracks.length > 0 &&
             tracks.map((track) => {
-              return <Track {...track} isLoading={isLoading} key={track.id} />;
+              return <Track {...track} key={track.id} />;
             })}
         </S.MainCenterContentPlayList>
       </S.MainCenterblockContent>

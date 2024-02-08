@@ -1,18 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import React from "react";
-import SkeletonFooter from "../SkeletonBar/SkeletonBar";
+
+// import SkeletonFooter from "../SkeletonBar/SkeletonBar";
 
 import * as S from "./bar.Styles";
 import moment from "moment/moment";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getTrack,
-  setAllTrack,
-  setPlayTrack,
-  setPauseTrack,
+  // setAllTrack,
+  // setPlayTrack,
+  // setPauseTrack,
   setNextTrack,
   setPrevTrack,
   setTracksListShuffled,
+ 
 } from "../../Store/slice";
 
 function Bar() {
@@ -23,7 +24,6 @@ function Bar() {
   );
 
   const dispatch = useDispatch();
-  // const { theme } = useThemeContext();
 
   // const [isPlaying, setIsPlaying] = useState(false);
   const [isLoop, setIsLoop] = useState(false);
@@ -33,8 +33,6 @@ function Bar() {
   const audioRef = useRef(null);
   const formatDuration = moment.utc(duration * 1000).format("mm:ss");
   const formatCurrantTime = moment.utc(currentTime * 1000).format("mm:ss");
-
-  // const currentTrack = useSelector((state) => state.music.currentTrack);
 
   const onChenge = (event) => {
     const newCurrentTime = event.target.value;
@@ -67,14 +65,14 @@ function Bar() {
   };
 
   const handlNextTrack = () => {
-    dispatch(setNextTrack());
+    dispatch(setNextTrack);
   };
   const handlRevTrack = () => {
-    alert("Пока не работает");
+    dispatch(setPrevTrack);
   };
 
   const handlShuffleTrack = () => {
-    alert("Пока не работает");
+    dispatch(setTracksListShuffled);
   };
 
   useEffect(() => {
@@ -138,8 +136,8 @@ function Bar() {
           <S.BarPlayerBlock>
             <S.BarPlayer>
               <S.BarPlayerControls>
-                <S.BarPlayerPrev>
-                  <S.BarPlayerPrevSvg onClick={handlRevTrack} alt="prev">
+                <S.BarPlayerPrev onClick={handlRevTrack}>
+                  <S.BarPlayerPrevSvg alt="prev">
                     <use xlinkHref="img/icon/sprite.svg#icon-prev"></use>
                   </S.BarPlayerPrevSvg>
                 </S.BarPlayerPrev>
@@ -190,20 +188,18 @@ function Bar() {
                       <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
                     </S.BarNrackPlaySvg>
                   </S.BarNrackPlayImage>
-                 
-                    <S.BarTrackPlyAutor>
-                      <S.BarTrackPlyAutorLink href="http://">
-                        {currentTrack.name}
-                      </S.BarTrackPlyAutorLink>
-                    </S.BarTrackPlyAutor>
-                 
-                
-                    <S.BarTrackPlyApbum>
-                      <S.BarTrackPlyAlbumLink href="http://">
-                        {currentTrack.author}
-                      </S.BarTrackPlyAlbumLink>
-                    </S.BarTrackPlyApbum>
-                 
+
+                  <S.BarTrackPlyAutor>
+                    <S.BarTrackPlyAutorLink href="http://">
+                      {currentTrack.name}
+                    </S.BarTrackPlyAutorLink>
+                  </S.BarTrackPlyAutor>
+
+                  <S.BarTrackPlyApbum>
+                    <S.BarTrackPlyAlbumLink href="http://">
+                      {currentTrack.author}
+                    </S.BarTrackPlyAlbumLink>
+                  </S.BarTrackPlyApbum>
                 </S.BarNrackPlayContain>
 
                 <S.BarTrackPlyLikeDis>

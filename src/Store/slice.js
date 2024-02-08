@@ -1,69 +1,3 @@
-// import { createSlice } from "@reduxjs/toolkit";
-
-// const initialState = {
-//   trackList: [],
-//   currentTrack: null,
-//   isShuffledTrackList: [],
-//   shuffledList: [],
-// };
-// export const sliceMusicTrack = createSlice({
-//   name: "music",
-//   initialState,
-//   reducers: {
-//     getTrack: (state, action) => {
-//       console.log(state);
-//       console.log(action);
-//       state.currentTrack = action.payload;
-//       state.trackList = action.payload.getAllTracks;
-//     },
-
-//     setNextTrack: (state, action) => {
-//       console.log(state);
-//       console.log(action);
-//       const allTrackList = state.isShuffledTrackList
-//         ? state.shuffledList.sort(() => Math.random() - 0.5)
-//         : state.trackList;
-
-//         const currentIndex = allTrackList.findIndex((track) => {
-//           console.log(track.id);
-//           return track.id === state.currentTrack.id;
-//         });
-
-//         if (allTrackList[currentIndex + 1]) {
-//           state.currentTrack = allTrackList[currentIndex + 1];
-//         }
-
-//       // let currentIndex = 0;
-//       // for (let i = 0; i < state.trackList.length; i++) {
-//       //   if () {
-         
-//       //     state.currentTrack = action.payload;
-//       //     state.currentTrack = state.trackList[currentIndex + 1];
-
-          
-//         }
-//       }
-    
-//   //   setNextTrack: (state) => {
-//   //     console.log(state);
-//   //     const allTrackList = state.isShuffledTrackList
-//   //       ? state.shuffledList.sort(() => Math.random() - 0.5)
-//   //       : state.trackList;
-
-//   //     const currentIndex = allTrackList.findIndex((track) => {
-//   //       console.log(track.id);
-//   //       return track.id === state.currentTrack.id;
-//   //     });
-
-//   //     if (allTrackList[currentIndex + 1]) {
-//   //       state.currentTrack = allTrackList[currentIndex + 1];
-//   //     }
-//   //   },
-//   // },
-// });
-// export const { getTrack, setNextTrack } = sliceMusicTrack.actions;
-// export default sliceMusicTrack.reducer;
-
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -79,10 +13,11 @@ export const sliceTrackList = createSlice({
   initialState,
   reducers: {
     getTrack: (state, action) => {
+      // console.log(state);
+      // console.log(action);
       state.currentTrack = action.payload;
       state.trackList = action.payload.getAllTracks;
       state.shuffledList = action.payload.getAllTracks;
-     
     },
     setPlayTrack: (state) => {
       state.$isPlaying = true;
@@ -134,3 +69,68 @@ export const {
   setTracksListShuffled,
 } = sliceTrackList.actions;
 export default sliceTrackList.reducer;
+
+// import { createSlice } from "@reduxjs/toolkit";
+
+// const initialState = {
+//   trackList: [],
+//   currentTrack: null,
+//   isShuffledTrackList: [],
+//   shuffledList: [],
+// };
+// export const sliceMusicTrack = createSlice({
+//   name: "music",
+//   initialState,
+//   reducers: {
+//     getTrack: (state, action) => {
+//       console.log(state);
+//       console.log(action);
+//       state.currentTrack = action.payload;
+//       state.trackList = action.payload.getAllTracks;
+//     },
+
+//     setNextTrack: (state, action) => {
+//       console.log(state);
+//       console.log(action);
+//       const allTrackList = state.isShuffledTrackList
+//         ? state.shuffledList.sort(() => Math.random() - 0.5)
+//         : state.trackList;
+
+//         const currentIndex = allTrackList.findIndex((track) => {
+//           console.log(track.id);
+//           return track.id === state.currentTrack.id;
+//         });
+
+//         if (allTrackList[currentIndex + 1]) {
+//           state.currentTrack = allTrackList[currentIndex + 1];
+//         }
+
+//       // let currentIndex = 0;
+//       // for (let i = 0; i < state.trackList.length; i++) {
+//       //   if () {
+
+//       //     state.currentTrack = action.payload;
+//       //     state.currentTrack = state.trackList[currentIndex + 1];
+
+//         }
+//       }
+
+//   //   setNextTrack: (state) => {
+//   //     console.log(state);
+//   //     const allTrackList = state.isShuffledTrackList
+//   //       ? state.shuffledList.sort(() => Math.random() - 0.5)
+//   //       : state.trackList;
+
+//   //     const currentIndex = allTrackList.findIndex((track) => {
+//   //       console.log(track.id);
+//   //       return track.id === state.currentTrack.id;
+//   //     });
+
+//   //     if (allTrackList[currentIndex + 1]) {
+//   //       state.currentTrack = allTrackList[currentIndex + 1];
+//   //     }
+//   //   },
+//   // },
+// });
+// export const { getTrack, setNextTrack } = sliceMusicTrack.actions;
+// export default sliceMusicTrack.reducer;

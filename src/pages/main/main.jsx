@@ -7,6 +7,7 @@ import GlobalStyle from "../../components/global";
 import Nav from "../../components/NavMain/Navigation";
 import { getTracks } from "../../Api/api";
 import { useSelector } from "react-redux";
+import { setNextTrack } from "../../Store/slice";
 
 export const Main = ({ user, deletUserHendler }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -30,7 +31,7 @@ export const Main = ({ user, deletUserHendler }) => {
           <Playlist tracks={tracks} isLoading={isLoading} />
           <Sidebar isLoading={isLoading} />
         </S.Main>
-        {currentTrack ? <Bar /> : null}
+        {currentTrack ? <Bar handlNextTrack={setNextTrack}/> : null}
 
         <footer className="footer">
           <GlobalStyle />
