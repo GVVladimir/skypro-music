@@ -6,23 +6,29 @@ import * as S from "../../App.Styles";
 import GlobalStyle from "../../components/global";
 import Nav from "../../components/NavMain/Navigation";
 import { getTracks } from "../../Api/api";
-import { useSelector } from "react-redux";
-import { setNextTrack } from "../../Store/slice";
+import { useDispatch, useSelector } from "react-redux";
+import { setNextTrack, setTrackList } from "../../Store/slice";
 
 export const Main = ({ user, deletUserHendler }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [tracks, setTracks] = useState([]);
+  // const [tracks, setTracks] = useState([]);
   // const [carentTrak, setCarentTrak] = useState(null);
 
-  useEffect(() => { 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
     getTracks().then((tracks) => {
-      setTracks(tracks);
+      dispatch(
+        setTrackList({
+          trackList: tracks,
+        })
+      );
       setIsLoading(false);
-    },3000);
+    }, 3000);
   }, []);
 
   const currentTrack = useSelector((state) => state.music.currentTrack);
-  
+  const tracks = useSelector((state) => state.music.trackList);
   return (
     <S.Wrapper>
       <S.Container>
@@ -31,7 +37,7 @@ export const Main = ({ user, deletUserHendler }) => {
           <Playlist tracks={tracks} isLoading={isLoading} />
           <Sidebar isLoading={isLoading} />
         </S.Main>
-        {currentTrack ? <Bar handlNextTrack={setNextTrack}/> : null}
+        {currentTrack ? <Bar handlNextTrack={setNextTrack} /> : null}
 
         <footer className="footer">
           <GlobalStyle />

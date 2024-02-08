@@ -8,12 +8,11 @@ import moment from "moment/moment";
 import { useDispatch, useSelector } from "react-redux";
 import {
   // setAllTrack,
-  // setPlayTrack,
-  // setPauseTrack,
+  setPlayTrack,
+  setPauseTrack,
   setNextTrack,
   setPrevTrack,
   setTracksListShuffled,
- 
 } from "../../Store/slice";
 
 function Bar() {
@@ -52,6 +51,9 @@ function Bar() {
         setCurrentTime(0);
       }
     };
+
+    // audioRef.current?.addEventListener('ended', () => { dispatch(playNextTrack()); });
+    
     audio.addEventListener("timeupdate", timeUpdate);
     return () => {
       audio.removeEventListener("timeupdate", timeUpdate);
@@ -65,14 +67,14 @@ function Bar() {
   };
 
   const handlNextTrack = () => {
-    dispatch(setNextTrack);
+    dispatch(setNextTrack());
   };
   const handlRevTrack = () => {
-    dispatch(setPrevTrack);
+    dispatch(setPrevTrack());
   };
 
   const handlShuffleTrack = () => {
-    dispatch(setTracksListShuffled);
+    dispatch(setTracksListShuffled());
   };
 
   useEffect(() => {
@@ -85,12 +87,12 @@ function Bar() {
 
   const handleStart = () => {
     audioRef.current.play();
-    // setIsPlaying(true);
+    dispatch(setPlayTrack());
   };
 
   const handleStop = () => {
     audioRef.current.pause();
-    // setIsPlaying(false);
+    dispatch(setPauseTrack());
   };
 
   const handleStartLoop = () => {

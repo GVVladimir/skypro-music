@@ -7,17 +7,18 @@ import { getTrack } from "../../Store/slice";
 
 
 export const Track = ({
-  isLoading,
-  name,
-  author,
-  album,
-  duration_in_seconds,
-  track_file,
+  // isLoading,
+  // name,
+  // author,
+  // album,
+  // duration_in_seconds,
+  // track_file,
+  track,
 }) => {
   const dispatch = useDispatch();
   return (
     <S.MainCenterContentPlayListItem
-      onClick={() => dispatch(getTrack({ name, author, album, track_file }))}
+      onClick={() => dispatch(getTrack({ ...track }))}
     >
       <S.MainCenterContentPlayListTrack>
         <S.MainCenterContentPlayListTrackTitle>
@@ -26,33 +27,33 @@ export const Track = ({
               <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
             </S.MainCenterContentPlayListTrackTitlSvg>
           </S.MainCenterContentPlayListTrackTitleImg>
-          {isLoading ? (
+          {track.isLoading ? (
             <SkeletonList />
           ) : (
             <div className="track__title-text">
               <S.MainCenterContentPlayListTrackTitleLink href="http://">
-                {name}
+                {track.name}
                 <S.MainCenterContentPlayListTrackTitleSpan></S.MainCenterContentPlayListTrackTitleSpan>
               </S.MainCenterContentPlayListTrackTitleLink>
             </div>
           )}
         </S.MainCenterContentPlayListTrackTitle>
 
-        {isLoading ? (
+        {track.isLoading ? (
           <SkeletonList />
         ) : (
           <S.MainCenterContentPlayListTrackTitleAuthor>
             <S.MainCenterContentPlayListTrackTitleAuthorLink href="http://">
-              {author}
+              {track.author}
             </S.MainCenterContentPlayListTrackTitleAuthorLink>
           </S.MainCenterContentPlayListTrackTitleAuthor>
         )}
-        {isLoading ? (
+        {track.isLoading ? (
           <SkeletonList />
         ) : (
           <S.MainCenterContentPlayListTrackAlbum>
             <S.MainCenterContentPlayListTrackAlbumLink href="http://">
-              {album}
+              {track.album}
             </S.MainCenterContentPlayListTrackAlbumLink>
           </S.MainCenterContentPlayListTrackAlbum>
         )}
@@ -61,8 +62,8 @@ export const Track = ({
             <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
           </S.MainCenterContentPlayListTrackTimeSvg>
           <S.MainCenterContentPlayListTrackTimeText>
-            {`${Math.floor(duration_in_seconds / 60)}: ${Math.floor(
-              duration_in_seconds % 60
+            {`${Math.floor(track.duration_in_seconds / 60)}: ${Math.floor(
+              track.duration_in_seconds % 60
             )}`}
             {/* {duration_in_seconds} */}
           </S.MainCenterContentPlayListTrackTimeText>

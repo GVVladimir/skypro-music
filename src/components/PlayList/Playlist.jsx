@@ -27,7 +27,7 @@ function Playlist({ tracks }) {
         <S.MainCenterContentPlayList>
           {tracks.length > 0 &&
             tracks.map((track) => {
-              return <Track {...track} key={track.id} />;
+              return <Track track={track} key={track.id} />;
             })}
         </S.MainCenterContentPlayList>
       </S.MainCenterblockContent>
