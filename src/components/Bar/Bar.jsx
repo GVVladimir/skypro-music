@@ -53,10 +53,15 @@ function Bar() {
     };
 
     // audioRef.current?.addEventListener('ended', () => { dispatch(playNextTrack()); });
-    
+    const setEndedTrack = () => {
+      dispatch(setNextTrack());
+    };
+
     audio.addEventListener("timeupdate", timeUpdate);
+    audio.addEventListener("ended", setEndedTrack);
     return () => {
       audio.removeEventListener("timeupdate", timeUpdate);
+      audio.removeEventListener("ended", setEndedTrack);
     };
   }, [dispatch]);
 
@@ -83,7 +88,7 @@ function Bar() {
     } else {
       handleStop();
     }
-  }, [currentTrack]);
+  }, []);
 
   const handleStart = () => {
     audioRef.current.play();
@@ -105,6 +110,10 @@ function Bar() {
     setIsLoop(false);
   };
 
+  const handleEnded = () => {
+    console.log("audio ended");
+  };
+
   const toggleLoop = isLoop ? handleStopLoop : handleStartLoop;
 
   const togglePlay = $isPlaying ? handleStop : handleStart;
@@ -115,11 +124,16 @@ function Bar() {
     } else {
       handleStop();
     }
-  }, [currentTrack]);
+  }, []);
 
   return (
     <>
-      <audio loop={false} ref={audioRef} src={currentTrack.track_file}></audio>
+      <audio
+        loop={false}
+        ref={audioRef}
+        src={currentTrack.track_file}
+        onEnded={handleEnded}
+      ></audio>
 
       <S.Bar>
         <S.BarContent>

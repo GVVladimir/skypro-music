@@ -1,10 +1,7 @@
 import SkeletonList from "../Skeleton/Skeleton";
 import * as S from "../PlayList/PlayList.Styles";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getTrack } from "../../Store/slice";
-
-
-
 
 export const Track = ({
   // isLoading,
@@ -16,16 +13,24 @@ export const Track = ({
   track,
 }) => {
   const dispatch = useDispatch();
+  const currentTrack = useSelector((state) => state.music.currentTrack);
+  const $isPlaying = useSelector((state) => state.music.$isPlaying);
   return (
     <S.MainCenterContentPlayListItem
       onClick={() => dispatch(getTrack({ ...track }))}
     >
-      <S.MainCenterContentPlayListTrack>
+      <S.MainCenterContentPlayListTrack key={track.id}>
         <S.MainCenterContentPlayListTrackTitle>
           <S.MainCenterContentPlayListTrackTitleImg>
-            <S.MainCenterContentPlayListTrackTitlSvg alt="music">
-              <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
-            </S.MainCenterContentPlayListTrackTitlSvg>
+            {currentTrack && currentTrack.id === track.id ? (
+              <S.MainCenterContentPlayListTrackTitlPlaySvge
+                $isPlaying={$isPlaying}
+              ></S.MainCenterContentPlayListTrackTitlPlaySvge>
+            ) : (
+              <S.MainCenterContentPlayListTrackTitlSvg alt="music">
+                <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
+              </S.MainCenterContentPlayListTrackTitlSvg>
+            )}
           </S.MainCenterContentPlayListTrackTitleImg>
           {track.isLoading ? (
             <SkeletonList />

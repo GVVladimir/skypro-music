@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import "../components/PlayList/PlayList.Styles";
 
 const initialState = {
   trackList: [],
@@ -7,7 +8,7 @@ const initialState = {
   isShuffledTrackList: false,
   $isPlaying: false,
 };
-
+// const [activePlay, setActivePlay] = useState(false)
 export const sliceTrackList = createSlice({
   name: "music",
   initialState,
@@ -16,8 +17,6 @@ export const sliceTrackList = createSlice({
       // console.log(state);
       // console.log(action);
       state.currentTrack = action.payload;
-      // state.trackList = action.payload.getAllTracks;
-      // state.shuffledList = action.payload.getAllTracks;
     },
     setPlayTrack: (state) => {
       state.$isPlaying = true;
@@ -27,9 +26,8 @@ export const sliceTrackList = createSlice({
     },
     setNextTrack: (state) => {
       const allTrackList = state.isShuffledTrackList
-        ? state.shuffledList
-        : // .sort(() => Math.random() - 0.5)
-          state.trackList;
+        ? state.shuffledList.sort(() => Math.random() - 0.5)
+        : state.trackList;
 
       const tracksIndex = state.trackList.findIndex((track) => {
         console.log(track.id);
@@ -47,7 +45,6 @@ export const sliceTrackList = createSlice({
         : state.trackList;
 
       const tracksIndex = allTrackList.findIndex((track) => {
-        console.log(track.id);
         return track.id === state.currentTrack.id;
       });
 
@@ -57,7 +54,7 @@ export const sliceTrackList = createSlice({
     },
     setTracksListShuffled: (state) => {
       state.isShuffledTrackList = !state.isShuffledTrackList;
-      state.shuffledList = [...state.trackList].sort(() => Math.random() - 0.5)
+      state.shuffledList = [...state.trackList].sort(() => Math.random() - 0.5);
     },
 
     setTrackList: (state, action) => {
