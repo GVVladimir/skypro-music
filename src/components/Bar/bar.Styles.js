@@ -302,6 +302,7 @@ export const BarTrackPlyLikeDis = styled.div`
 
 export const BarTrackPlyLike = styled.div`
   padding: 5px;
+  cursor: pointer;
 `;
 
 export const BarTrackPlyLikeSvg = styled.svg`
@@ -309,11 +310,13 @@ export const BarTrackPlyLikeSvg = styled.svg`
   height: 12px;
   fill: transparent;
   stroke: #696969;
+  cursor: pointer;
 `;
 
 export const BarTrackDisLike = styled.div`
   padding: 5px;
   margin-left: 28.5px;
+  cursor: pointer;
 `;
 
 export const BarTrackDisLikeSvg = styled.svg`
@@ -321,6 +324,7 @@ export const BarTrackDisLikeSvg = styled.svg`
   height: 13px;
   fill: transparent;
   stroke: #696969;
+  cursor: pointer;
 `;
 export const BarVolumeProgress = styled.div`
   width: 109px;

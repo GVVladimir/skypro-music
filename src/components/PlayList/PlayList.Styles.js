@@ -165,17 +165,17 @@ export const MainCenterContentPlayListTrackTitlSvg = styled.svg`
 `;
 
 export const MainCenterContentPlayListTrackTitlPlaySvge = styled.svg`
-width: 16px;
-height: 16px;
-background-color: #b672ff;
-border-radius: 8px;
-display: block;
-animation: ${(props) =>
-  props.$isPlaying
-    ? css`
-        ${bubble_out} 0.6s ease-in-out infinite both
-      `
-    : null};
+  width: 16px;
+  height: 16px;
+  background-color: #b672ff;
+  border-radius: 8px;
+  display: block;
+  animation: ${(props) =>
+    props.$isPlaying
+      ? css`
+          ${bubble_out} 0.6s ease-in-out infinite both
+        `
+      : null};
 `;
 export const bubble_out = keyframes`
 0%,
@@ -194,6 +194,7 @@ export const MainCenterContentPlayListTrackTitleLink = styled.div`
   font-size: 16px;
   line-height: 24px;
   color: #ffffff;
+  cursor: pointer;
 `;
 
 export const MainCenterContentPlayListTrackTitleSpan = styled.span`

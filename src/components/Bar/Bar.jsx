@@ -13,6 +13,7 @@ import {
   setNextTrack,
   setPrevTrack,
   setTracksListShuffled,
+  setLikeTruck,
 } from "../../Store/slice";
 
 function Bar() {
@@ -40,7 +41,7 @@ function Bar() {
 
   useEffect(() => {
     const audio = audioRef.current;
-    audio.volume = 0.5;
+    audio.volume = 0;
     setVolume(audio.volume);
     const timeUpdate = () => {
       if (audio.currentTime && audio.duration) {
@@ -74,12 +75,21 @@ function Bar() {
   const handlNextTrack = () => {
     dispatch(setNextTrack());
   };
+
   const handlRevTrack = () => {
     dispatch(setPrevTrack());
   };
 
   const handlShuffleTrack = () => {
     dispatch(setTracksListShuffled());
+  };
+
+  const handleLikeHeart = () => {
+    dispatch(setLikeTruck());
+  };
+
+  const handleDislikeHeart = () => {
+    dispatch(setLikeTruck());
   };
 
   useEffect(() => {
@@ -117,6 +127,8 @@ function Bar() {
   const toggleLoop = isLoop ? handleStopLoop : handleStartLoop;
 
   const togglePlay = $isPlaying ? handleStop : handleStart;
+
+  // const toggleLike = islike & 
 
   useEffect(() => {
     if (currentTrack) {
@@ -218,17 +230,20 @@ function Bar() {
                   </S.BarTrackPlyApbum>
                 </S.BarNrackPlayContain>
 
-                <S.BarTrackPlyLikeDis>
-                  <S.BarTrackPlyLike>
-                    <S.BarTrackPlyLikeSvg alt="like">
-                      <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-                    </S.BarTrackPlyLikeSvg>
-                  </S.BarTrackPlyLike>
-                  <S.BarTrackDisLike>
-                    <S.BarTrackDisLikeSvg alt="dislike">
-                      <use xlinkHref="img/icon/sprite.svg#icon-dislike"></use>
-                    </S.BarTrackDisLikeSvg>
-                  </S.BarTrackDisLike>
+                <S.BarTrackPlyLikeDis onClick={handleLikeHeart}>
+                  { setLikeTruck ? (
+                    <S.BarTrackPlyLike>
+                      <S.BarTrackPlyLikeSvg alt="like">
+                        <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
+                      </S.BarTrackPlyLikeSvg>
+                    </S.BarTrackPlyLike>
+                  ) : (
+                    <S.BarTrackDisLike>
+                      <S.BarTrackDisLikeSvg alt="dislike">
+                        <use xlinkHref="img/icon/sprite.svg#icon-dislike"></use>
+                      </S.BarTrackDisLikeSvg>
+                    </S.BarTrackDisLike>
+                  )}
                 </S.BarTrackPlyLikeDis>
               </S.PlayerTrackPlay>
             </S.BarPlayer>

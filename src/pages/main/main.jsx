@@ -9,6 +9,7 @@ import { getTracks } from "../../Api/api";
 import { useDispatch, useSelector } from "react-redux";
 import { setNextTrack, setTrackList } from "../../Store/slice";
 
+
 export const Main = ({ user, deletUserHendler }) => {
   const [isLoading, setIsLoading] = useState(true);
   // const [tracks, setTracks] = useState([]);
@@ -37,6 +38,7 @@ export const Main = ({ user, deletUserHendler }) => {
           <Playlist tracks={tracks} isLoading={isLoading} />
           <Sidebar isLoading={isLoading} />
         </S.Main>
+       
         {currentTrack ? <Bar handlNextTrack={setNextTrack} /> : null}
 
         <footer className="footer">

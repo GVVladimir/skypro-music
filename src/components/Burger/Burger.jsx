@@ -6,7 +6,7 @@ function Burger({user,deletUserHendler}) {
     <S.NavMenu>
       <S.MenuList>
         <S.MenuItem>
-          <S.MenuLink href="/#">Главное</S.MenuLink>
+          <S.MenuLink to="/">Главное</S.MenuLink>
         </S.MenuItem>
         <S.MenuItem>
           <S.MenuLink to="/favorits">Мой плейлист</S.MenuLink>
