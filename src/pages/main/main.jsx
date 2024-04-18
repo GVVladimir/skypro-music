@@ -15,18 +15,18 @@ export const Main = ({ user, deletUserHendler }) => {
   // const [tracks, setTracks] = useState([]);
   // const [carentTrak, setCarentTrak] = useState(null);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    getTracks().then((tracks) => {
-      dispatch(
-        setTrackList({
-          trackList: tracks,
-        })
-      );
-      setIsLoading(false);
-    }, 3000);
-  }, []);
+  // useEffect(() => {
+  //   getTracks().then((tracks) => {
+  //     dispatch(
+  //       setTrackList({
+  //         trackList: tracks,
+  //       })
+  //     );
+  //     setIsLoading(false);
+  //   }, 3000);
+  // }, []);
 
   const currentTrack = useSelector((state) => state.music.currentTrack);
   const tracks = useSelector((state) => state.music.trackList);

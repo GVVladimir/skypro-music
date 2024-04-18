@@ -4,8 +4,14 @@ import Track from "../Track/track";
 
 import * as S from "./PlayList.Styles";
 import SelectionCriteria from "../selectionСriteria/selectionСriteria";
+import { useAllTracksQuery } from "../../redux/ApiMusic";
+import { useEffect } from "react";
 
-function Playlist({ tracks }) {
+function Playlist() {
+  const{data = []} = useAllTracksQuery()
+  useEffect(() => {
+    console.log(data)
+  },[data])
   return (
     <S.MainCenterblock>
       {/* <Search />
@@ -15,8 +21,8 @@ function Playlist({ tracks }) {
       <S.MainCenterblockContent>
         <SelectionCriteria />
         <S.MainCenterContentPlayList>
-          {tracks.length > 0 &&
-            tracks.map((track) => {
+          {data.length > 0 &&
+            data.map((track) => {
               return <Track track={track} key={track.id} />;
             })}
         </S.MainCenterContentPlayList>

@@ -3,8 +3,10 @@ import * as S from "../../App.Styles";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Stor/AutnContext";
 import { loginUser, registrUser } from "../../Api/Auth";
+import { useGetTokenMutation } from "../../redux/AuthApi";
 
 export const Login = ({ isLoginMode = false }) => {
+  const [getToken] = useGetTokenMutation();
   const { AuthLogin } = useContext(AuthContext);
   // const playBtnHendler = () => {
   //   localStorage.setItem("user", "true");
@@ -62,6 +64,9 @@ export const Login = ({ isLoginMode = false }) => {
         return;
       }
       const userData = await loginUser({ email, password });
+      await getToken({email, password}).unwrap().then((data) =>{
+        localStorage.setItem('token', JSON.stringify(data))
+      });
 
       AuthLogin(userData);
       navigate("/");

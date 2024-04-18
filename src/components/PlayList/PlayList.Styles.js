@@ -235,13 +235,14 @@ export const MainCenterContentPlayListTrackAlbumLink = styled.a`
   line-height: 24px;
   color: #696969;
 `;
-
+// сердечко лайк
 export const MainCenterContentPlayListTrackTimeSvg = styled.svg`
   width: 14px;
   height: 12px;
   margin-right: 17px;
   fill: transparent;
   stroke: #696969;
+  cursor: pointer;
 `;
 
 export const MainCenterContentPlayListTrackTimeText = styled.span`
